@@ -1,3 +1,5 @@
+# This coffee chat bot uses recursive functions
+
 print("Welcome to the cafe!")
 
 def coffee_bot():
