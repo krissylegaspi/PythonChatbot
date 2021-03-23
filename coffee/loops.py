@@ -1,3 +1,5 @@
+# This coffee chat bot uses loops
+
 from loopsutils import print_message, get_size, order_latte
 
 print("Welcome to the cafe!")
