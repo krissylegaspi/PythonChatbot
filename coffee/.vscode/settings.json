@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.extraPaths": [
+        "./path/to/module/code"
+    ],
+    "python.analysis.extraPaths": [
+        "./path/to/module/code"
+    ]
+}
