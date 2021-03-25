@@ -21,10 +21,8 @@ class AlienBot:
             'answer_why_intent': r'why\sare.*',
             'cubed_intent': r'.*cube.*(\d+)',
             'how_intent': r'how\s.*',
-            'curious_intent': r'.*\s*curious.*',
             'my_turn_intent': r'ask\sme.*',
-            'add_intent': r'.*(\d+).*plus.*(\d+)'
-            # 'unsure_response_intent': r''
+            'unsure_response_intent': r''
         }
 
     def greet(self):
@@ -49,15 +47,13 @@ class AlienBot:
         reply = input(random.choice(self.random_questions)).lower()
         while not self.make_exit(reply):
             reply = input(self.match_reply(reply))
-        while not self.negative_res(reply):
-            reply = input(self.match_reply(reply))
 
     def match_reply(self, reply):
         for key, value in self.alienbabble.items():
             intent = key
             regex_pattern = value
             found_match = re.match(regex_pattern, reply)
-            # Add more intents
+            # if elif else
             if found_match and intent == 'describe_planet_intent':
                 return self.describe_planet_intent()
             elif found_match and intent == 'answer_why_intent':
@@ -66,22 +62,15 @@ class AlienBot:
                 return self.cubed_intent(found_match.groups()[0])
             elif found_match and intent == 'how_intent':
                 return self.how_intent()
-            elif found_match and intent == 'curious_intent':
-                return self.curious_intent()
             elif found_match and intent == 'my_turn_intent':
                 return self.my_turn_intent()
-            elif found_match and intent == 'add_intent':
-                return self.add_intent((found_match.groups()[0]),(found_match.groups()[0]))
-            # elif found_match and intent == 'unsure_response_intent':
-            #     return self.unsure_response_intent()
             # else:
-            #     return
-        return self.no_match_intent()
+            #     return self.no_match_intent()
     
     def describe_planet_intent(self):
         responses = (
             "My planet is a utopia of diverse organisms and species. \n",
-            "I am from South 4 Legion, the capital of the Gamvid Galaxies. \n",
+            "I am from Opidipus, the capital of the Wayward Galaxies. \n",
             "I am from a galaxy far away where our beings are far too advanced for the human body. \n",
             "I am from a world where currency is obsolete. \n"
         )
@@ -91,9 +80,7 @@ class AlienBot:
         responses = (
             "I come in peace. \n",
             "I am here to collect data on your planet and its inhabitants. \n",
-            "I heard the coffee is good. \n",
-            "I was bored of my planet. \n",
-            "I wanted to go sight-seeing. \n"
+            "I heard the coffee is good. \n"
         )
         return random.choice(responses)
 
@@ -110,23 +97,8 @@ class AlienBot:
         )
         return random.choice(responses)
 
-    def curious_intent(self):
-        responses = (
-            "Curiousity killed the cat. \n",
-            "Knowledge is power. \n",
-            "One day, you will find out. Maybe. \n",
-            "Look up cryopreservation. See for yourself. \n"
-        )
-        return random.choice(responses)
-
     def my_turn_intent(self):
         self.chat()
-
-    def add_intent(self, number1, number2):
-        number1 = int(number1)
-        number2 = int(number2)
-        added = number1 + number2
-        return "The sum of {} and {} is {}. \n".format(number1, number2, added)
 
     def no_match_intent(self):
         responses = (
@@ -141,13 +113,9 @@ class AlienBot:
         )
         return random.choice(responses)
 
-    def unsure_response_intent(self):
-        responses = (
-            "I'm not sure if I understand. \n",
-            "Can you explain another way? \n",
-            "I didn't catch that. Can you elaborate? \n"
-        )
-        return random.choice(responses)
 
-ETuring = AlienBot()
-ETuring.greet()
+    def unsure_response_intent(self):
+        return "In unsure_response_intent()"
+
+eturing = AlienBot()
+eturing.greet()

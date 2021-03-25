@@ -9,3 +9,9 @@ Coffeebot is built using control flow. There are two  versions of this chatbot. 
 
 ## Alienbot
 Alienbot is a rule-based chatbot combined with Natural Language Processing.
+
+*TODO*
+- More responses to current intents
+- Adding more intents
+- Math questions with numbers larger than 9
+- Reflections?
